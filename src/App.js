@@ -3,8 +3,10 @@ import styled from "styled-components";
 import Navbar from "./Components/Navbar";
 import Vector from "./Assets/Images/vector.png";
 import Button from "./Components/Button";
+import ButtonTwo from "./Components/ButtonTwo";
 import { createGlobalStyle } from "styled-components";
 import { useState } from "react";
+import MediaQuery from "react-responsive";
 
 const gradient = {
   light: `linear-gradient(101.83deg,
@@ -15,7 +17,10 @@ const gradient = {
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background: ${(props) => (props.mode ? gradient.light : gradient.dark)};
+    background: ${(props) =>
+      props.mode
+        ? gradient.light
+        : gradient.dark} no-repeat center center fixed;
     color: ${(props) => (props.mode ? "#111827" : "#F9FAFB")};
     -webkit-transition: background-color 2s; /* For Safari 3.1 to 6.0 */
     -webkit-transition: all .4s ease-in-out;
@@ -40,6 +45,11 @@ const Content = styled.div`
   display: flex;
   flex-direction: row;
   padding-top: 50px;
+  align-items: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Img = styled.img`
@@ -50,17 +60,25 @@ const Image = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 70%;
+  min-width: 350px;
+  max-width: 550px;
 `;
 
 const Text = styled.div`
   display: flex;
   width: 50%;
   flex-direction: column;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const H1 = styled.h1`
   margin: 0px;
+  @media (max-width: 768px) {
+    font-size: 25px;
+  }
 `;
 
 const Span = styled.span`
@@ -85,16 +103,59 @@ const Span = styled.span`
 const P = styled.p`
   width: 80%;
   font-size: 1.2rem;
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const MainLink = styled.li`
+  font-weight: bold;
+  line-height: 36px;
+  font-size: 24px;
+`;
+
+const Ul = styled.ul`
+  list-style-type: none;
+  padding-inline-start: 0px;
+`;
+
+const Menu = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 function App() {
   const [light, setmode] = useState(true);
-  console.log(light);
+  const [showmenu, setshowmenu] = useState(false);
+
   return (
     <AppContainer>
       <GlobalStyle mode={light} />
       <Container>
-        <Navbar light={light} setmode={setmode} />
+        <Navbar
+          light={light}
+          setmode={setmode}
+          setshowmenu={setshowmenu}
+          showmenu={showmenu}
+        />
+        {showmenu ? (
+          <Menu>
+            <Ul>
+              <MainLink>Home</MainLink>
+            </Ul>
+            <Ul>
+              <MainLink>Portfolio</MainLink>
+            </Ul>
+            <Ul onClick={() => setmode(!light)}>
+              <MainLink>{light ? "DarkMode" : "LightMode"}</MainLink>
+            </Ul>
+          </Menu>
+        ) : null}
         <Content>
           <Text>
             <H1>
@@ -108,11 +169,17 @@ function App() {
               innovants dans lesquels j’ambitionne de construire une carrière
               professionnelle.
             </P>
-            <Button light={light} content="Mes projets" />
+            <MediaQuery minWidth={769}>
+              <Button light={light} content="Mes projets" />
+            </MediaQuery>
           </Text>
           <Image>
             <Img src={Vector} />
           </Image>
+          <MediaQuery maxWidth={768}>
+            <Button light={light} content="Mes projets" />
+            <ButtonTwo light={light} content="Mon profil" />
+          </MediaQuery>
         </Content>
       </Container>
     </AppContainer>

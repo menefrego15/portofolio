@@ -2,6 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Vector from "../Assets/Images/Vector.svg";
 import Dark from "../Assets/Images/dark.svg";
+import hamburger from "../Assets/Images/hamburger.svg";
+import hamburgerdark from "../Assets/Images/hamburgerdark.svg";
+import cross from "../Assets/Images/cross.svg";
+import crosswhite from "../Assets/Images/crosswhite.svg";
+import MediaQuery from "react-responsive";
 
 const Nav = styled.nav`
   width: 100%;
@@ -37,13 +42,13 @@ const Link = styled.div`
 `;
 
 const Img = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
 `;
 
 const Li = styled.li``;
 
-const Navbar = ({ light, setmode }) => {
+const Navbar = ({ light, setmode, showmenu, setshowmenu }) => {
   return (
     <Nav>
       <Main>
@@ -51,21 +56,34 @@ const Navbar = ({ light, setmode }) => {
           <MainLink>Ilies</MainLink>
         </Ul>
       </Main>
-      <Link>
+      <MediaQuery minWidth={768}>
+        <Link>
+          <Ul>
+            <Li>Hello</Li>
+          </Ul>
+          <Ul>
+            <Li>Portfolio</Li>
+          </Ul>
+        </Link>
+        <Theme onClick={() => setmode(!light)}>
+          <Ul>
+            <Li>
+              <Img src={light ? Vector : Dark} alt="Change Theme" />
+            </Li>
+          </Ul>
+        </Theme>
+      </MediaQuery>
+      <MediaQuery maxWidth={769}>
         <Ul>
-          <Li>Hello</Li>
-        </Ul>
-        <Ul>
-          <Li>Portfolio</Li>
-        </Ul>
-      </Link>
-      <Theme onClick={() => setmode(!light)}>
-        <Ul>
-          <Li>
-            <Img src={light ? Vector : Dark} alt="Change Theme" />
+          <Li onClick={() => setshowmenu(!showmenu)}>
+            {showmenu ? (
+              <Img src={light ? cross : crosswhite} alt="Menu" />
+            ) : (
+              <Img src={light ? hamburgerdark : hamburger} alt="Menu" />
+            )}
           </Li>
         </Ul>
-      </Theme>
+      </MediaQuery>
     </Nav>
   );
 };
