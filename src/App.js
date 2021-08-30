@@ -2,6 +2,7 @@ import "./App.css";
 import styled from "styled-components";
 import Navbar from "./Components/Navbar";
 import Vector from "./Assets/Images/vector.png";
+import Vector2 from "./Assets/Images/vector2.png";
 import Button from "./Components/Button";
 import ButtonTwo from "./Components/ButtonTwo";
 import { createGlobalStyle } from "styled-components";
@@ -9,10 +10,15 @@ import { useState } from "react";
 import MediaQuery from "react-responsive";
 
 const gradient = {
-  light: `linear-gradient(101.83deg,
+  light: `linear-gradient(201.83deg,
     #ff7bca 0.9%,
-    rgba(255, 197, 111, 0.4) 78.87%)`,
+    rgba(255, 255, 255, 0.4) 78.87%)`,
   dark: `linear-gradient(104.3deg, #121212 33.84%, #1E3A8A 162.79%)`,
+};
+
+const gradientText = {
+  light: "linear-gradient(90deg, #8B5CF6 0%, #EC4899 43.9%)",
+  dark: "linear-gradient(90deg, #f59e0b 30.95%, #ef4444 77.15%)",
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -85,7 +91,8 @@ const Span = styled.span`
   background-color: black;
 
   /* Create the gradient. */
-  background-image: linear-gradient(90deg, #f59e0b 30.95%, #ef4444 77.15%);
+  background-image: ${(props) =>
+    props.mode ? gradientText.light : gradientText.dark};
 
   /* Set the background size and repeat properties. */
   background-size: 100%;
@@ -160,7 +167,7 @@ function App() {
           <Text>
             <H1>
               Hello 👋🏾 <br />
-              Ilies 20 ans et futur <Span>développeur</Span>
+              Ilies 20 ans et futur <Span mode={light}>développeur</Span>
             </H1>
             <P>
               Jeune futur codeur, je suis passionné par ce domaine ainsi que par
@@ -173,9 +180,7 @@ function App() {
               <Button light={light} content="Mes projets" />
             </MediaQuery>
           </Text>
-          <Image>
-            <Img src={Vector} />
-          </Image>
+          <Image>{light ? <Img src={Vector2} /> : <Img src={Vector} />}</Image>
           <MediaQuery maxWidth={768}>
             <Button light={light} content="Mes projets" />
             <ButtonTwo light={light} content="Mon profil" />
