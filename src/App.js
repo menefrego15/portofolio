@@ -60,6 +60,10 @@ const Content = styled.div`
 
 const Img = styled.img`
   width: 90%;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 const Image = styled.div`
@@ -170,11 +174,11 @@ function App() {
               Ilies 20 ans et futur <Span mode={light}>développeur</Span>
             </H1>
             <P>
-              Jeune futur codeur, je suis passionné par ce domaine ainsi que par
-              sa beauté et sa complexité. Je trouve aussi un grand intérêt en
-              IA, en sécurité informatique et en design, domaines toujours plus
-              innovants dans lesquels j’ambitionne de construire une carrière
-              professionnelle.
+              Jeune codeur ambitieux, je suis passionné par ce domaine ainsi que
+              par sa beauté et sa complexité. Je nourris aussi un grand intérêt
+              en IA, en sécurité informatique et en design, domaines toujours
+              plus innovants dans lesquels j’ambitionne de construire une
+              carrière professionnelle.
             </P>
             <MediaQuery minWidth={769}>
               <Button light={light} content="Mes projets" />
