@@ -14,12 +14,8 @@ const Btn = styled.button`
   min-width: 140px;
 `;
 
-const Button = ({ light, content, fx }) => {
-  return (
-    <Btn light={light} onclick={fx}>
-      {content} →
-    </Btn>
-  );
+const Button = ({ light, content }) => {
+  return <Btn light={light}>{content} →</Btn>;
 };
 
 export default Button;
