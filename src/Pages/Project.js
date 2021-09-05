@@ -10,7 +10,6 @@ import Playern from "../Assets/Images/playern.png";
 import Color from "../Assets/Images/color.png";
 import { createGlobalStyle } from "styled-components";
 import { useState, useEffect } from "react";
-import MediaQuery from "react-responsive";
 import { Link as A } from "react-router-dom";
 
 const gradient = {
@@ -18,11 +17,6 @@ const gradient = {
     #ff7bca 0.9%,
     rgba(255, 255, 255, 0.4) 78.87%)`,
   dark: `linear-gradient(104.3deg, #121212 33.84%, #1E3A8A 162.79%)`,
-};
-
-const gradientText = {
-  light: "linear-gradient(90deg, #8B5CF6 0%, #EC4899 43.9%)",
-  dark: "linear-gradient(90deg, #f59e0b 30.95%, #ef4444 77.15%)",
 };
 
 const GlobalStyle = createGlobalStyle`
