@@ -148,7 +148,6 @@ const Menu = styled.div`
 
 function Home() {
   const [light, setmode] = useState(localStorage.getItem("light") || "");
-  const [showprofil, setshowprofil] = useState(false);
   const [theme, settheme] = useState(false);
   const [showmenu, setshowmenu] = useState(false);
 
