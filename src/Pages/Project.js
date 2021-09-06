@@ -177,27 +177,50 @@ function Project() {
             <H1>Mes projets</H1>
           </Text>
           <Image>
-            <A to="https://dev.to/abbeyperini/toggle-dark-mode-in-react-28c9">
-              <Img src={Playern} />
-            </A>
-            <A to="/">
-              <Img src={Color} />
-            </A>
-            <A to="/">
-              <Img src={Hsl} />
-            </A>
-            <A to="/">
-              <Img src={Escape} />
-            </A>
-            <A to="/">
-              <Img src={Survival} />
-            </A>
-            <A to="/">
-              <Img src={Greem} />
-            </A>
-            <A to="/">
-              <Img src={Foodfactory} />
-            </A>
+            <Img
+              src={Playern}
+              onClick={() => (window.location.href = "https://google.com")}
+            />
+            <Img
+              src={Color}
+              onClick={() =>
+                (window.location.href =
+                  "https://menefrego15.github.io/GUESSCOLORGAME/")
+              }
+            />
+            <Img
+              src={Hsl}
+              onClick={() =>
+                (window.location.href =
+                  "https://menefrego15.github.io/HIGHERLOWERSAME/")
+              }
+            />
+            <Img
+              src={Escape}
+              onClick={() =>
+                (window.location.href = "https://github.com/menefrego15/escape")
+              }
+            />
+            <Img
+              src={Survival}
+              onClick={() =>
+                (window.location.href =
+                  "https://menefrego15.github.io/SURVIVAL/")
+              }
+            />
+            <Img
+              src={Greem}
+              onClick={() =>
+                (window.location.href = "https://github.com/menefrego15/greem")
+              }
+            />
+            <Img
+              src={Foodfactory}
+              onClick={() =>
+                (window.location.href =
+                  "https://menefrego15.github.io/FOODFACTORY/")
+              }
+            />
           </Image>
         </Content>
       </Container>
